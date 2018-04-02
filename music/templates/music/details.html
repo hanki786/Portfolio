@@ -1,0 +1,48 @@
+{% extends 'music/base.html' %}
+{% block title %} Album Details {% endblock %}
+
+{% block body %}
+	<div class="col-sm-2">
+	    <div class="thumbnail">
+	        <img src="{{ album.album_logo.url }}" class="card-img-top" alt="Card image" style="width:90%">
+	    	<div class="caption">
+	            <h3>{{ album.album_title }}</h3>
+	            <p>{{ album.artist }}</p>
+	    	</div>
+		</div>
+	</div>
+	
+	<!--ADD BUTTON-->
+	<div class="col-sm-10">
+		<button class="btn btn-success" type="button">View All</button>
+		<button class="btn btn-link" type="button">Add New Song</button>
+	</div>
+	
+	<div class="col-sm-10">
+		<h2>All Songs</h2>         
+		  <table class="table">
+		    <thead>
+		      <tr>
+		        <th>Title</th>
+		        <th>Audio File</th>
+		        <th>Favorite</th>
+		        <th>Auction</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		      <tr>
+		        <td>udikaan</td>
+		        <td>MP3</td>
+		        <td>Yes</td>
+		        <td>No</td>
+		      </tr>
+		    </tbody>
+		  </table>
+		</div>
+	</div>
+{% endblock %}
+
+
+
+
+

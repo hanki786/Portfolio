@@ -1,0 +1,40 @@
+{% extends 'music/base.html' %}
+
+
+{% block body %}
+<div class="container">
+	{% for item in all_album %}
+	{% if forloop.first %}<div class="row">{% endif %}
+		<div class="col-sm-3">
+		    <div class="thumbnail">
+	            <img src="{{ item.album_logo.url }}" class="card-img-top" alt="Card image" style="width:90%">
+	        	<div class="caption">
+		            <h4>{{ item.album_title }}</h4>
+		            <p>{{ item.artist }}</p>
+		            <!--buttons-->
+		            <p>
+			            <a href="{% url 'music:details' item.id %}" class="btn btn-primary">Details</a>
+			          
+			            {# delete button ------------------- #}
+			            <form action="{% url 'music:album-delete' item.id %}" method="Post">
+			           		{% csrf_token %}
+			           		<input type="hidden" name="album_id" value="{{ item.id }}"/>
+
+			           		{# delete button ------------------- #}
+				            <button class="btn btn-default">
+				            	<span class="glyphicon glyphicon-trash"></span>
+				            </button>
+
+				            {# fevorite button -------------------#}
+				            <button class="btn btn-default">
+				            	<span class="glyphicon glyphicon-star-empty"></span>
+				            </button>
+			            </form>				            
+		            </p>
+	        	</div>
+			</div>
+		</div>
+	{% if forloop.counter|divisibleby:4 or forloop.last %}</div><div class="row">{% endif %}
+	{% endfor %}
+</div> <!--container-->
+{% endblock %}
